@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-margin-top ion-padding-top">
+    <ion-title>
+      PokemonApi
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h2 class="ion-padding-start">Pokemons Disponíveis: {{ countPokemons}} </h2>
+
+  <ion-list>
+    
+    @for( poke of pokemons; track poke) {
+      <ion-item>
+        <ion-grid> 
+          {{ poke.name }} 
+        </ion-grid>
+
+
+        <ion-button
+          class="ion-padding" 
+          [routerLink]="['detalhes/', poke.name]"
+        >
+          Detalhes
+        </ion-button>
+      </ion-item>
+    }
+    
+  </ion-list>
+
+</ion-content>

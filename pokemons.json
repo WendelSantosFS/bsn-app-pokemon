@@ -1,0 +1,8 @@
+{
+    "Pokemons": [
+        { "id": 1, "nome": "pikachu", "caminho": "src/assets/pikachu.png"},
+        { "id": 2, "nome": "bulbasaur", "caminho": "src/assets/bulbasaur.png"},
+        { "id": 3, "nome": "charmander", "caminho":"src/assets/Charmander.png"},
+        { "id": 4, "nome": "charizard", "caminho":"src/assets/charizard.png"}
+    ]
+}

@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar-header-first" color="primary">
+    <ion-title>Detalhes do Pokemon</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- <h1 class="ion-padding-start">{{ id }}</h1> -->
+
+  <ion-card class="ion-card-img">
+    <img src="../../../assets/Charmander.png">
+  </ion-card>
+
+  <ion-card class="ion-card-infoPoke">
+    <h2> {{ id }}</h2>
+
+    <div>
+      <p><b>Habilidades:</b> {{ ' Habilidaddes' }}</p>
+      <p><b>Experiência Base:</b> {{ ' Exp base ' }}</p>
+      <p><b>Pontos de Vida:</b> {{ ' Vida ' }}</p>
+      <p><b>Pontos de Ataque:</b> {{ ' ATK ' }}</p>
+      <p><b>Pontos de Defesa:</b> {{ ' Defense ' }}</p>
+      <p><b>Pontos de Velocidade:</b> {{ ' Speed ' }}</p>
+    </div>
+  </ion-card>
+
+  <ion-button class="ion-btn-home" [routerLink]="['/']">
+    Voltar para Home
+  </ion-button>
+
+</ion-content>
