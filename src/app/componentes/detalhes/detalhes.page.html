@@ -6,22 +6,20 @@
 
 <ion-content [fullscreen]="true">
 
-  <!-- <h1 class="ion-padding-start">{{ id }}</h1> -->
-
   <ion-card class="ion-card-img">
-    <img src="../../../assets/Charmander.png">
+      <img src="{{ pokemon.sprites.other.dream_world.front_default }}">
   </ion-card>
 
   <ion-card class="ion-card-infoPoke">
     <h2> {{ id }}</h2>
 
     <div>
-      <p><b>Habilidades:</b> {{ ' Habilidaddes' }}</p>
-      <p><b>Experiência Base:</b> {{ ' Exp base ' }}</p>
-      <p><b>Pontos de Vida:</b> {{ ' Vida ' }}</p>
-      <p><b>Pontos de Ataque:</b> {{ ' ATK ' }}</p>
-      <p><b>Pontos de Defesa:</b> {{ ' Defense ' }}</p>
-      <p><b>Pontos de Velocidade:</b> {{ ' Speed ' }}</p>
+        <p><b>Habilidades:</b> {{ ' Habilidaddes' }}</p>
+        <p><b>Experiência Base:</b> {{ pokemon.base_experience }}</p>
+        <p><b>Pontos de Vida:</b> {{ pokemon.stats[0].base_stat }}</p>
+        <p><b>Pontos de Ataque:</b> {{ pokemon.stats[1].base_stat }}</p>
+        <p><b>Pontos de Defesa:</b> {{ pokemon.stats[2].base_stat }}</p>
+        <p><b>Pontos de Velocidade:</b> {{ pokemon.stats[5].base_stat }}</p>
     </div>
   </ion-card>
 

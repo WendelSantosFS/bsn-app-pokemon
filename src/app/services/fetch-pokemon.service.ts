@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface PokemonResult {
@@ -20,6 +20,7 @@ export interface Pokemons {
 })
 export class FetchPokemonService {
 
+  private base_url: string = 'https://pokeapi.co/api/v2/pokemon/'
   private initialUrlPokemon = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=30'; // 30 pokemons   início= 0
   // private nextPagePokemons: string | null = null
 
@@ -30,6 +31,9 @@ export class FetchPokemonService {
     return this.http.get<any>(this.initialUrlPokemon)
   }
 
-  // getOnePokemon () {}
+  getOnePokemon (nameOrId: string | null): Observable<any> {
+    const url = `${this.base_url}${nameOrId}`
+    return this.http.get<any>(url)
+  }
 
 }

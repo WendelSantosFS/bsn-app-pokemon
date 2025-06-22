@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonButton } from '@ionic/angular/standalone';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { AllPokemons } from 'src/app/services/all-pokemons.service';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
+import { FetchPokemonService } from 'src/app/services/fetch-pokemon.service';
 
 @Component({
   selector: 'app-detalhes',
@@ -14,17 +14,32 @@ import { AllPokemons } from 'src/app/services/all-pokemons.service';
 })
 export class DetalhesPage implements OnInit {
 
-  id: string | null = null
-  pokemons = inject(AllPokemons)
+  id: string | null = null;
+
+  pokemon: any;
+  arrayAbilities: string[] = []
+ 
   
-  constructor(private route: ActivatedRoute) { 
+  constructor(
+    private route: ActivatedRoute, 
+    private fetchPokemonService: FetchPokemonService,
+    private router: Router
+  ) { 
     this.id = this.route.snapshot.paramMap.get('id');
   }
   
-  usingPokemons = this.pokemons.getPoke(this.id)
-  
+  ngOnInit() {
+    this.fetchPokemonService.getOnePokemon(this.id).subscribe({
+      next: (data: any) => {
+        this.pokemon = data;
+        console.log('Dados recebidos: ', data)
 
-
-  ngOnInit() { }
+        this.router.navigate(['/detalhes', this.id])
+      },
+      error: (error: any) => {
+        console.log('Erro detectado: ', error)
+      }
+    })
+   }
 
 }
