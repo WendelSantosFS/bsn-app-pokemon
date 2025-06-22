@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonButton } from '@ionic/angular/standalone';
 import { ActivatedRoute, RouterModule, Router } from '@angular/router';
-import { FetchPokemonService } from 'src/app/services/fetch-pokemon.service';
+import { FetchPokemonService, abilititesInter } from 'src/app/services/fetch-pokemon.service';
 
 @Component({
   selector: 'app-detalhes',
@@ -18,7 +18,8 @@ export class DetalhesPage implements OnInit {
 
   pokemon: any;
   arrayAbilities: string[] = []
- 
+  abilities: abilititesInter[] = []
+
   
   constructor(
     private route: ActivatedRoute, 
@@ -32,7 +33,14 @@ export class DetalhesPage implements OnInit {
     this.fetchPokemonService.getOnePokemon(this.id).subscribe({
       next: (data: any) => {
         this.pokemon = data;
-        console.log('Dados recebidos: ', data)
+        this.abilities = data.abilities  
+        
+        while (typeof(this.abilities[0].ability.name) === undefined) { 
+          return this.ngOnInit()
+        }
+        for (let i=0; i < this.abilities.length; i++) {
+          this.arrayAbilities.push( this.abilities[i].ability.name)
+        }
 
         this.router.navigate(['/detalhes', this.id])
       },

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
 
   <ion-card class="ion-card-img">
       <img src="{{ pokemon.sprites.other.dream_world.front_default }}">
@@ -14,7 +14,8 @@
     <h2> {{ id }}</h2>
 
     <div>
-        <p><b>Habilidades:</b> {{ ' Habilidaddes' }}</p>
+    
+        <p><b>Habilidades:</b> {{ arrayAbilities }}</p>
         <p><b>Experiência Base:</b> {{ pokemon.base_experience }}</p>
         <p><b>Pontos de Vida:</b> {{ pokemon.stats[0].base_stat }}</p>
         <p><b>Pontos de Ataque:</b> {{ pokemon.stats[1].base_stat }}</p>
@@ -23,7 +24,7 @@
     </div>
   </ion-card>
 
-  <ion-button class="ion-btn-home" [routerLink]="['/']">
+  <ion-button class="ion-btn-back" [routerLink]="['/']">
     Voltar para Home
   </ion-button>
 

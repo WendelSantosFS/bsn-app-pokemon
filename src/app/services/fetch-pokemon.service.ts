@@ -15,6 +15,12 @@ export interface Pokemons {
 }
 
 
+export interface abilititesInter {
+  ability: PokemonResult,
+  is_hidden: boolean,
+  slot: number
+}
+
 @Injectable({
   providedIn: 'root'
 })

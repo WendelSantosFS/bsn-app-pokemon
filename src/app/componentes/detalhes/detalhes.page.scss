@@ -7,7 +7,6 @@
 .ion-card-img {
 
     display: flex;
-    align-items: center;
     justify-content: center;
     border: none;
     box-shadow: none;
@@ -31,4 +30,8 @@
     p {
         font-size: 20px;
     }
+}
+
+.ion-btn-back {
+    padding-bottom: 104px;
 }
