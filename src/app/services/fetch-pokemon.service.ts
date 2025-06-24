@@ -27,7 +27,7 @@ export interface abilititesInter {
 export class FetchPokemonService {
 
   private base_url: string = 'https://pokeapi.co/api/v2/pokemon/'
-  private initialUrlPokemon = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=30'; // 30 pokemons   início= 0
+  private initialUrlPokemon = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=30';
   // private nextPagePokemons: string | null = null
 
 

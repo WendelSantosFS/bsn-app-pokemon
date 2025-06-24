@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tela de Pokemons Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-list>
+    @for( favorito of favoritos; track favorito) {
+          <ion-item class="item-list-favoritos"> 
+            <p>{{ favorito.url }}</p>
+            <ion-button [routerLink]="['/detalhes/', favorito.url]" class="ion-padding">Detalhes</ion-button>
+          </ion-item>
+    }
+  </ion-list>
+
+  <ion-button [routerLink]="['/']" class="ion-padding-horizontal">Voltar para o HOME</ion-button>
+
+</ion-content>

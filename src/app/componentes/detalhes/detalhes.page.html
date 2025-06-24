@@ -24,8 +24,28 @@
     </div>
   </ion-card>
 
-  <ion-button class="ion-btn-back" [routerLink]="['/']">
-    Voltar para Home
-  </ion-button>
+  <div class="ion-btn-back">
+    <ion-button [routerLink]="['/']">
+        Voltar para Home
+    </ion-button>
+
+    
+    @if (isFavorite(pokemon.id) === false) {
+      <ion-button (click)="addFavoritePokemon(pokemon.id)">
+        <ion-icon name="star" size="small"></ion-icon>
+      </ion-button>
+    }
+
+
+    @if (isFavorite(pokemon.id) === true){
+      <ion-button class="ion-btn-trash" (click)="removeFavoritePokemon(pokemon.id)">
+        <ion-icon name="trash" size="small"></ion-icon>
+      </ion-button>
+    }
+  
+
+
+  </div>
+  
 
 </ion-content>
