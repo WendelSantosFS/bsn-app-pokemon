@@ -14,16 +14,30 @@ import { FetchPokemonService, PokemonResult, Pokemons } from 'src/app/services/f
 })
 export class HomePage implements OnInit {
 
+  public initialRequestPokemons: Pokemons = {
+    count: 0,
+    next: null,
+    previous: null,
+    results: []
+  }
+
   public pokemons: PokemonResult[]= []
   public countPokemons: number = 0;
+
+  public initialPagesPokemon: number = 1;
+  public totalPagesPokemon: number = 0;
+
 
   constructor( private fetchPokemonService: FetchPokemonService) { }
 
   ngOnInit() {
     this.fetchPokemonService.getPokemonsInitial().subscribe({
         next: (data: Pokemons ) => {
+          this.initialRequestPokemons = data;
           this.pokemons = data.results;
           this.countPokemons = data.count;
+
+          this.totalPagesPokemon = Math.round(data.count / 30) + 1;
         },
         error: (error) => {
           console.log('Erro ao carregar pokemons: ', error)
@@ -31,5 +45,40 @@ export class HomePage implements OnInit {
       })
   }
 
+  previusPagePokemon ( url: any ) {
+    if (typeof(url) === 'string') {
+      
+      this.fetchPokemonService.getPagePokemon(url).subscribe( {
+        next: (data: Pokemons ) => {
+          this.initialRequestPokemons = data;
+          this.pokemons = data.results;
+          this.countPokemons = data.count;
+          this.initialPagesPokemon -= 1;
+          },
+          error: (error) => {
+            console.log('Erro ao carregar pokemons: ', error)
+          }
+      })
+    }
+  }
 
+
+  nextPagePokemon ( url: any ) {
+    if (typeof(url) === 'string') {
+      
+      console.log(url)
+
+      this.fetchPokemonService.getPagePokemon(url).subscribe( {
+        next: (data: Pokemons ) => {
+          this.initialRequestPokemons = data;
+          this.pokemons = data.results;
+          this.countPokemons = data.count;
+          this.initialPagesPokemon += 1;
+          },
+          error: (error) => {
+            console.log('Erro ao carregar pokemons: ', error)
+          }
+      })
+    }
+  }
 }

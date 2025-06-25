@@ -33,4 +33,25 @@
     
   </ion-list>
 
+  <div class="nextAndPreviusHome">
+
+
+    
+    @if (initialRequestPokemons.previous) {
+      <ion-button (click)="previusPagePokemon(initialRequestPokemons.previous)">
+        Anterior
+      </ion-button>
+    }
+    
+    <p> {{ initialPagesPokemon + ' / ' + totalPagesPokemon }} </p>
+    
+    @if (initialRequestPokemons.next) {
+      <ion-button (click)="nextPagePokemon(initialRequestPokemons.next)">
+        Próxima
+      </ion-button>
+    }
+  
+    
+  </div>
+
 </ion-content>

@@ -10,7 +10,7 @@ export interface PokemonResult {
 export interface Pokemons {
   count: number,
   next: string | null,
-  previus: string | null
+  previous: string | null
   results: PokemonResult[]
 }
 
@@ -28,7 +28,6 @@ export class FetchPokemonService {
 
   private base_url: string = 'https://pokeapi.co/api/v2/pokemon/'
   private initialUrlPokemon = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=30';
-  // private nextPagePokemons: string | null = null
 
 
   constructor(private http: HttpClient) { }
@@ -39,6 +38,10 @@ export class FetchPokemonService {
 
   getOnePokemon (nameOrId: string | null): Observable<any> {
     const url = `${this.base_url}${nameOrId}`
+    return this.http.get<any>(url)
+  }
+
+  getPagePokemon ( url: string) {
     return this.http.get<any>(url)
   }
 
