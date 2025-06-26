@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
           this.pokemons = data.results;
           this.countPokemons = data.count;
 
-          this.totalPagesPokemon = Math.round(data.count / 30) + 1;
+          this.totalPagesPokemon = Math.ceil(data.count / 30);
         },
         error: (error) => {
           console.log('Erro ao carregar pokemons: ', error)

@@ -9,6 +9,24 @@
   <ion-card class="ion-card-img">
       <img src="{{ pokemon.sprites.other.dream_world.front_default }}">
   </ion-card>
+    
+  <p class="ion-padding-horizontal">Imagens relacionadas: </p>
+    <ion-card class="ion-card-threeImages">
+
+      @if ( pokemon.sprites.back_default !== null) {
+        <img src="{{ pokemon.sprites.back_default }} ">
+      }
+
+      @if ( pokemon.sprites.back_shiny !== null ) {
+        <img src="{{ pokemon.sprites.back_shiny }} ">
+      }
+
+      @if ( typeof(pokemon.sprites.front_shiny) !== null) {
+        <img src="{{ pokemon.sprites.front_shiny }} ">
+      }
+
+
+    </ion-card>
 
   <ion-card class="ion-card-infoPoke">
     <h2> {{ id }}</h2>
