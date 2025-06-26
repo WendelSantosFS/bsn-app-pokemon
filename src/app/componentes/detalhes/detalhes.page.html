@@ -7,10 +7,13 @@
 <ion-content>
 
   <ion-card class="ion-card-img">
-      <img src="{{ pokemon.sprites.other.dream_world.front_default }}">
+      @if ( pokemon.sprites.front_default !== null) {
+        <img src="{{ pokemon.sprites.front_default }}">
+      } @else {
+        <h1>Sem imagem de Perfil</h1>>
+      }
   </ion-card>
     
-  <p class="ion-padding-horizontal">Imagens relacionadas: </p>
     <ion-card class="ion-card-threeImages">
 
       @if ( pokemon.sprites.back_default !== null) {
