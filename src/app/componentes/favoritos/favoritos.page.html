@@ -4,11 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding-start">
   
   <ion-list>
     @for( favorito of favoritos; track favorito) {
-          <ion-item class="item-list-favoritos"> 
+          <ion-item class="item-list-favoritos ion-padding-start"> 
             <p>{{ favorito.url }}</p>
             <ion-button [routerLink]="['/detalhes/', favorito.url]" class="ion-padding">Detalhes</ion-button>
           </ion-item>
