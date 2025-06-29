@@ -19,15 +19,14 @@
       @if ( pokemon.sprites.back_default !== null) {
         <img src="{{ pokemon.sprites.back_default }} ">
       }
-
-      @if ( pokemon.sprites.back_shiny !== null ) {
-        <img src="{{ pokemon.sprites.back_shiny }} ">
-      }
-
+ 
       @if ( typeof(pokemon.sprites.front_shiny) !== null) {
         <img src="{{ pokemon.sprites.front_shiny }} ">
       }
-
+      
+      @if ( pokemon.sprites.back_shiny !== null ) {
+        <img src="{{ pokemon.sprites.back_shiny }} ">
+      }
 
     </ion-card>
 
